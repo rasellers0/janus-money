@@ -1,0 +1,62 @@
+users
+    user_id - BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY
+    first_name - varchar
+    last_name - varchar
+    create_date - date
+    last_login - timestamptz
+
+
+accounts
+    account_id - BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY
+    user_id - bigint (fk)
+    account_name - varchar
+    account_type - varchar
+    institution - varchar
+    created_at - timestamptz
+    updated_at - timestamptz
+
+categories
+    cat_id - BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY
+    user_id - bigint (fk)
+    category_name - varchar
+    -- color - varchar
+    -- icon - varchar
+    created_at - timestamptz
+
+transactions
+    trans_id - BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY
+    account_id - bigint (fk)
+    category_id - bigint (fk)
+    recurring_transaction_id - bigint (fk, nullable)
+    merchant - varchar
+    description - varchar
+    transaction_date - date
+    amount - numeric(12,2)
+    created_at - timestamptz
+    updated_at - timestamptz
+
+budgets
+    budget_id - BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY
+    user_id - bigint (fk)
+    category_id - bigint (fk)
+    budget_name - varchar
+    description - varchar
+    budget_amount - numeric(12,2)
+    start_date - date
+    end_date - date
+    created_at - timestamptz
+
+recurring_transactions
+    recurring_trans_id - BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY
+    user_id - bigint (fk)
+    account_id - bigint (fk)
+    category_id - bigint (fk)
+    merchant - varchar
+    description - varchar
+    amount - numeric(12,2)
+    cron_schedule - varchar
+    next_run - timestamptz
+    last_run - timestamptz
+    enabled - boolean
+    created_at - timestamptz
+    updated_at - timestamptz
