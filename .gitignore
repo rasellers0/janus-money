@@ -26,3 +26,5 @@ pnpm-debug.log*
 .vscode/
 
 coverage
+
+dev_roadmap.txt
