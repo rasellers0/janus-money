@@ -1,7 +1,7 @@
 
 create table recurring_transactions (
     recurring_trans_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id BIGINT NOT NULL,
+    user_id TEXT NOT NULL,
     account_id BIGINT NOT NULL,
     category_id BIGINT,
     merchant VARCHAR(255),
@@ -16,11 +16,11 @@ create table recurring_transactions (
 
     CONSTRAINT fk_user
         FOREIGN KEY (user_id)
-        REFERENCES users(user_id),
+        REFERENCES auth_db.user(id),
 
     CONSTRAINT fk_account
         FOREIGN KEY (account_id)
-        REFERENCES accounts(account_id),
+        REFERENCES financial_accounts(account_id),
 
     CONSTRAINT fk_category
         FOREIGN KEY (category_id)

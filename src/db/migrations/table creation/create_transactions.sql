@@ -12,7 +12,7 @@ create table transactions (
 
     CONSTRAINT fk_account
         FOREIGN KEY (account_id)
-        REFERENCES accounts(account_id),
+        REFERENCES financial_accounts(account_id),
 
     CONSTRAINT fk_category
         FOREIGN KEY (category_id)

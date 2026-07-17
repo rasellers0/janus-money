@@ -2,7 +2,7 @@
 create table budgets (
 
     budget_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id BIGINT NOT NULL,
+    user_id TEXT NOT NULL,
     category_id BIGINT NOT NULL,
     budget_name VARCHAR(255) NOT NULL,
     description VARCHAR(255),
@@ -13,13 +13,9 @@ create table budgets (
 
     CONSTRAINT fk_user
         FOREIGN KEY (user_id)
-        REFERENCES users(user_id),
+        REFERENCES auth_db.user(id),
 
     CONSTRAINT fk_category
         FOREIGN KEY (category_id)
-        REFERENCES categories(category_id),
-
-    -- CONSTRAINT fk_user_categories
-    --     FOREIGN KEY (user_id, category_id)
-    --     REFERENCES user_categories(user_id, category_id)
+        REFERENCES categories(category_id)
 )

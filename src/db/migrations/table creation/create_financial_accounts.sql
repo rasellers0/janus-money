@@ -10,5 +10,5 @@ create table financial_accounts (
 
     CONSTRAINT fk_user
         FOREIGN KEY (user_id)
-        REFERENCES auth.user(id)
+        REFERENCES auth_db.user(id),
 )

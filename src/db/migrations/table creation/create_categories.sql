@@ -8,5 +8,9 @@ create table categories (
     color VARCHAR(7),
     icon VARCHAR(50),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAM
-)
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_user
+        FOREIGN KEY (user_id)
+        REFERENCES auth_db.user(id)
+);
