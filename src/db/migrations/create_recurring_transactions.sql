@@ -25,3 +25,4 @@ create table recurring_transactions (
     CONSTRAINT fk_category
         FOREIGN KEY (category_id)
         REFERENCES categories(category_id)
+)

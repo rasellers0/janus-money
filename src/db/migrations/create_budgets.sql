@@ -17,4 +17,9 @@ create table budgets (
 
     CONSTRAINT fk_category
         FOREIGN KEY (category_id)
-        REFERENCES categories(category_id)
+        REFERENCES categories(category_id),
+
+    -- CONSTRAINT fk_user_categories
+    --     FOREIGN KEY (user_id, category_id)
+    --     REFERENCES user_categories(user_id, category_id)
+)
