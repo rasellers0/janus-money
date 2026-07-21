@@ -1,11 +1,23 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import "../styles/global.css";
+import { styles } from "../styles/styles.tsx"
 ---
-
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="en">
+    <head>
+        <title>Register | Janus Money</title>
+    </head>
+    
+    <body class={styles.layout.app}>
+        <div>
+            <h1 class={styles.typography.hero}>JANUS MONEY</h1>
+            <div class="grid grid-cols-12">
+				<a href="/signin" class="col-span-6">
+					<button class={`${styles.button.primary} float-right mr-4`} id="sign-in">Sign In</button>
+				</a>
+				<a href="/register" class="col-span-6">
+					<button class={`${styles.button.secondary} float-left ml-4`} id="register">Register</button>
+				</a>
+            </div>
+        </div>
+    </body>
+</html>
