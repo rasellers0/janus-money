@@ -1,43 +1,35 @@
 import { useState } from "react";
+import { loginSchema, type LoginFormData } from "../../schemas/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import "../../styles/global.css";
 import { styles } from "../../styles/styles.tsx";
 import { useForm } from "react-hook-form";
-import type { RegisterFormData } from "../../types/RegisterFormData.tsx";
-import { registerSchema } from "../../schemas/auth.ts";
-import { doRegister } from "../../services/authService.ts";
+import { authClient } from "../../lib/auth-client.ts";
 
-
-export default function RegisterForm(){
+export default function LoginForm(){
     const [serverError, setServerError] = useState("");
 
-    const {register, handleSubmit, formState: {errors, isSubmitting}} = useForm<RegisterFormData>({resolver: zodResolver(registerSchema),
-    defaultValues: {
-        name: "",
-        email: "",
-        password: ""
-    }
-});
+    const {register, handleSubmit, formState: {errors, isSubmitting}} = useForm<LoginFormData>({resolver: zodResolver(loginSchema),
+        defaultValues: {
+            email: "",
+            password: ""
+        }
+    });
 
+    async function onSubmit(data: LoginFormData) {
+        const result = await authClient.signIn.email(data);
 
-    async function onSubmit(data:RegisterFormData){
-        setServerError("");
-        const result = await doRegister(data);
         if (result.error) {
             setServerError(result.error.message || "An unknown error occured.");
             return;
         }
-        console.log(result);
+        console.log("Placeholder for future redirect to dashboard");
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-12">
-            <h1 className={`${styles.typography.h1} text-center p-6 col-span-12`}>Create Account</h1>
+            <h1 className={`${styles.typography.h1} text-center p-6 col-span-12`}>Sign In To Your Account</h1>
                 
-            <div className="col-span-4 mx-3">
-                <input type="text" placeholder="Name" className={styles.input.text} {...register("name")}/>
-                {errors.name && (<p className={styles.alert.error}>{errors.name.message}</p>)}
-            </div>
             <div className="col-span-4 mx-3">
                 <input type="email" placeholder="Email" className={styles.input.text} {...register("email")}/>
                 {errors.email && (<p className={styles.alert.error}>{errors.email.message}</p>)}
@@ -49,7 +41,7 @@ export default function RegisterForm(){
 
             <div className="col-span-3 m-3">
                 <button type="submit" disabled={isSubmitting} className={styles.button.primary}>
-                    {isSubmitting ? "Creating account..." : "Create Account"}
+                    {isSubmitting ? "Signing You In..." : "Sign In"}
                 </button>
             </div>
         </form>
