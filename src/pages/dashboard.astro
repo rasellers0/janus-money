@@ -1,0 +1,15 @@
+---
+import { TransactionTable } from "../components/dashboard/TransactionTable";
+import "../styles/global.css";
+import { styles } from "../styles/styles.tsx"
+---
+
+<html lang="en">
+    <head>
+        <title>Register | Janus Money</title>
+    </head>
+    
+    <body class={styles.layout.page}>
+        <TransactionTable client:load />
+    </body>
+</html>

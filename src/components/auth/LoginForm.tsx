@@ -5,10 +5,11 @@ import "../../styles/global.css";
 import { styles } from "../../styles/styles.tsx";
 import { useForm } from "react-hook-form";
 import { authClient } from "../../lib/auth-client.ts";
+import { useNavigate } from "react-router-dom";
+import { navigate } from "astro:transitions/client";
 
 export default function LoginForm(){
     const [serverError, setServerError] = useState("");
-
     const {register, handleSubmit, formState: {errors, isSubmitting}} = useForm<LoginFormData>({resolver: zodResolver(loginSchema),
         defaultValues: {
             email: "",
@@ -18,12 +19,12 @@ export default function LoginForm(){
 
     async function onSubmit(data: LoginFormData) {
         const result = await authClient.signIn.email(data);
-
+        const userId = result.data?.user.id
         if (result.error) {
             setServerError(result.error.message || "An unknown error occured.");
             return;
         }
-        console.log("Placeholder for future redirect to dashboard");
+        navigate("/dashboard", {state: {name: result.data?.user.name, userId: userId}});
     }
 
     return (
@@ -46,5 +47,4 @@ export default function LoginForm(){
             </div>
         </form>
         );
-
     }

@@ -1,4 +1,3 @@
-// src/styles/styles.ts
 
 export const styles = {
     layout: {
