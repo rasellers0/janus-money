@@ -1,15 +1,8 @@
 ---
 import LoginForm from "../components/auth/LoginForm";
-import "../styles/global.css";
-import { styles } from "../styles/styles.tsx"
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-    <head>
-        <title>Register | Janus Money</title>
-    </head>
-    
-    <body class={styles.layout.page}>
-        <LoginForm client:load />
-    </body>
-</html>
+<BaseLayout title="Login">
+    <LoginForm client:load />
+</BaseLayout>

@@ -5,7 +5,6 @@ import "../../styles/global.css";
 import { styles } from "../../styles/styles.tsx";
 import { useForm } from "react-hook-form";
 import { authClient } from "../../lib/auth-client.ts";
-import { useNavigate } from "react-router-dom";
 import { navigate } from "astro:transitions/client";
 
 export default function LoginForm(){
@@ -28,23 +27,26 @@ export default function LoginForm(){
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-12">
-            <h1 className={`${styles.typography.h1} text-center p-6 col-span-12`}>Sign In To Your Account</h1>
-                
-            <div className="col-span-4 mx-3">
-                <input type="email" placeholder="Email" className={styles.input.text} {...register("email")}/>
-                {errors.email && (<p className={styles.alert.error}>{errors.email.message}</p>)}
-            </div>
-            <div className="col-span-4 mx-3">
-                <input type="password" placeholder="Password" className={styles.input.text} {...register("password")}/>
-                {errors.password && (<p className={styles.alert.error}>{errors.password.message}</p>)}
-            </div>
+        <div>
+            <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-12">
+                <h1 className={`${styles.typography.h1} text-center p-6 col-span-12`}>Sign In To Your Account</h1>
+                    
+                <div className="col-span-4 mx-3">
+                    <input type="email" placeholder="Email" className={styles.input.text} {...register("email")}/>
+                    {errors.email && (<p className={styles.alert.error}>{errors.email.message}</p>)}
+                </div>
+                <div className="col-span-4 mx-3">
+                    <input type="password" placeholder="Password" className={styles.input.text} {...register("password")}/>
+                    {errors.password && (<p className={styles.alert.error}>{errors.password.message}</p>)}
+                </div>
 
-            <div className="col-span-3 m-3">
-                <button type="submit" disabled={isSubmitting} className={styles.button.primary}>
-                    {isSubmitting ? "Signing You In..." : "Sign In"}
-                </button>
-            </div>
-        </form>
+                <div className="col-span-3 m-3">
+                    <button type="submit" disabled={isSubmitting} className={styles.button.primary}>
+                        {isSubmitting ? "Signing You In..." : "Sign In"}
+                    </button>
+                </div>
+            </form>
+            {serverError && (<h1 className={styles.alert.error}>{serverError}</h1>)}
+        </div>
         );
     }

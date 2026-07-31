@@ -6,6 +6,15 @@
       "name": "Development server",
       "request": "launch",
       "type": "node-terminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Astro Frontmatter",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "skipFiles": ["<node_internals>/**"],
+      "smartStep": true
     }
   ]
 }

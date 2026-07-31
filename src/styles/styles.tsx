@@ -2,12 +2,14 @@
 export const styles = {
     layout: {
         app: `min-h-screen bg-lime-50 text-stone-800`,
-        page: `mx-auto max-w-7xl px-6 py-8`,
+        page: `mx-auto max-w-7xl px-6 py-8 bg-emerald-50`,
         section: `space-y-6`,
         centered: `flex min-h-screen items-center justify-center bg-lime-50 px-6`
     },
     card: {
-        default: `rounded-2xl bg-white p-8 shadow-md ring-1 ring-lime-100`,
+        default: `rounded-2xl bg-white p-8 shadow-md ring-1 ring-lime-300`,
+        inset: `rounded-2xl bg-white p-8 shadow-[inset_0_1px_6px_rgba(0,0,0,0.10)] ring-1 ring-lime-300/50`,
+        mat: `inset-0 rounded-2xl pointer-events-none shadow-[inset_0_0_18px_rgba(0,0,0,0.10),inset_0_1px_2px_rgba(255,255,255,0.8)]`,
         elevated: `rounded-2xl bg-white p-8 shadow-xl`,
         subtle: `rounded-xl bg-lime-100/40 p-6`
     },
@@ -31,6 +33,8 @@ export const styles = {
             hover:bg-lime-700 hover:shadow-md active:scale-[0.98] disabled:opacity-50`,
         secondary: `rounded-xl border border-lime-400 bg-white px-5 py-3 font-medium 
             text-lime-800 transition-all hover:bg-lime-100`,
+        default: `rounded-xl px-5 py-3 font-medium text-lime-800 shadow-sm transition-all
+            hover:bg-neutral-100 hover:shadow-md active:scale-[0.98] disabled:opacity-50`,
         danger: `rounded-xl bg-red-500 px-5 py-3 font-medium text-white transition-all hover:bg-red-600`,
         link: `font-medium text-lime-700 hover:text-lime-800 hover:underline`
     },
