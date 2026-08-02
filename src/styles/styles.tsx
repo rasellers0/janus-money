@@ -48,5 +48,21 @@ export const styles = {
         sidebar: `border-r border-lime-100 bg-white`,
         navItem: `rounded-lg px-3 py-2 text-stone-700 transition-colors hover:bg-lime-100`,
         activeNavItem: `rounded-lg bg-lime-200 px-3 py-2 font-medium text-lime-900`
-    }
+    },
+    modal: {
+        backdrop: `fixed inset-0 bg-black/40 transition-opacity`,
+        container: `fixed inset-0 z-10 overflow-y-auto`,
+        wrapper:`flex min-h-full items-center justify-center p-4`,
+        panel: `w-full max-w-lg rounded-lg bg-white shadow-xl`,
+        header: `border-b px-6 py-4`,
+        title: `text-lg font-semibold text-gray-900`,
+        body: `space-y-4 px-6 py-5`,
+        footer: `flex justify-end rounded-b-lg gap-3 border-t bg-gray-50 px-6 py-4`,
+    },
+    form: {
+        group: `space-y-1`,
+        label: `block text-sm font-medium text-gray-700`,
+        input: `w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none`,
+        error: `text-sm text-red-600`,
+    },
 };
