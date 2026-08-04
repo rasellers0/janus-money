@@ -4,21 +4,7 @@ import { styles } from "../../styles/styles";
 import { useForm } from 'react-hook-form';
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
 
-type AddAccountCardProps = {
-    onClick: () => void;
-};
 
-export default function AddAccountCard({ onClick }: AddAccountCardProps) {
-    return (
-        <button className={styles.button.default} onClick={onClick}>
-            <h1 className="text-center">Add Account</h1>
-        </button>
-    );
-}
-
-function handleClick(){
-    alert("button clicked!!!!");
-}
 
 interface FormValues {
     accountName: string;

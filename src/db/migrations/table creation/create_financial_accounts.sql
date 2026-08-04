@@ -5,6 +5,7 @@ create table financial_accounts (
     account_name VARCHAR(255) NOT NULL,
     account_type VARCHAR(255) NOT NULL,
     institution VARCHAR(255) NOT NULL,
+    account_status VARCHAR(255) NOT NULL CHECK (account_status IN ('active', 'inactive', 'closed')),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 
